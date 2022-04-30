@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class NovelBook extends Book {
 
+	public NovelBook(BookKind kind) {
+		super(kind);
+	}
+	
 	public void getUserInput(Scanner input) {
 		System.out.print("Book Code: ");
 		int code = input.nextInt(); 

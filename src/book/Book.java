@@ -12,12 +12,25 @@ public class Book {
 	public Book() {	
 	}
 	
+	
+	public Book(BookKind kind) {
+		this.kind = kind;
+	}
+	
 	public Book(String name, int code) {
 		this.name = name;
 		this.code = code;
 	}
 	
 	public Book(String name, int code, String author, String publisher) {
+		this.name = name;
+		this.code = code;
+		this.author = author;
+		this.publisher = publisher;
+	}
+	
+	public Book(BookKind kind, String name, int code, String author, String publisher) {
+		this.kind = kind;
 		this.name = name;
 		this.code = code;
 		this.author = author;
@@ -64,9 +77,25 @@ public class Book {
 		this.publisher = publisher;
 	}
 
-	
+
 	public void printInfo() {
-		System.out.println("name:" + name + " code:" + code + " author:" + author + " publisher:" + publisher);		
+		String skind = "none";
+		switch(this.kind) {
+		case Poem:
+			skind = "Poem";
+			break;
+		case Novel:
+			skind = "Novel";
+			break;
+		case ComicBook:
+			skind = "ComicBook";
+			break;
+		case NonFiction:
+			skind = "NonFiction";
+			break;
+		default:
+		}
+		System.out.println("kind:" + skind + " name:" + name + " code:" + code + " author:" + author + " publisher:" + publisher);		
 	}
 	
 	public void getUserInput(Scanner input) {

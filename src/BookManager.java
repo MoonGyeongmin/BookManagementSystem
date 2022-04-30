@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import book.Book;
+import book.BookKind;
+import book.NonFictionBook;
 import book.NovelBook;
 
 public class BookManager {
@@ -14,18 +16,25 @@ public class BookManager {
 		int kind = 0;
 		Book book;
 		while(kind != 1 && kind != 2) {
-			System.out.print("1 for Poem ");
-			System.out.println("2 for Novel");
-			System.out.print("Select num for Book Kind between 1 and 2:");
+			System.out.println("1 for Poem ");
+			System.out.println("2 for Novel ");
+			System.out.println("3 for NonFiction ");
+			System.out.print("Select num 1, 2, or 3 for Book Kind:");
 			kind = input.nextInt(); 
 			if(kind == 1) {
-				book = new Book();
+				book = new Book(BookKind.Poem);
 				book.getUserInput(input);
 				books.add(book);
 				break;
 			}
 			else if(kind == 2) {
-				book = new NovelBook();
+				book = new NovelBook(BookKind.Novel);
+				book.getUserInput(input);
+				books.add(book);
+				break;
+			}
+			else if(kind == 3) {
+				book = new NonFictionBook(BookKind.NonFiction);
 				book.getUserInput(input);
 				books.add(book);
 				break;
