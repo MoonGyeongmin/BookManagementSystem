@@ -6,8 +6,8 @@ public class NonFictionBook extends Book {
 
 	protected String optionAuthor;
 	protected String optionPublisher;
-	
-	
+
+
 	public NonFictionBook(BookKind kind) {
 		super(kind);
 	}
@@ -41,7 +41,7 @@ public class NonFictionBook extends Book {
 			else {
 			}
 		}
-		
+
 		answer = 'x';
 		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N')
 		{
@@ -66,7 +66,7 @@ public class NonFictionBook extends Book {
 		String publisher = input.nextLine();
 		this.setPublisher(publisher);
 	}
-	
+
 	public void printInfo() {
 		String skind = "none";
 		switch(this.kind) {
@@ -86,5 +86,5 @@ public class NonFictionBook extends Book {
 		}
 		System.out.println("kind:" + skind + " name:" + name + " code:" + code + " author:" + author + " publisher:" + publisher + " option author:" + author + " option publisher:" + publisher);		
 	}
-	
+
 }

@@ -3,11 +3,11 @@ import java.util.Scanner;
 public class MenuManager {
 
 	public static void main(String[] args) {
-		
+
 		int num = 0;
 		Scanner input = new Scanner(System.in);
 		BookManager bookmanager = new BookManager(input);
-		
+
 		while (num != 5) {
 			System.out.println("1. Add Books");
 			System.out.println("2. Delete Books");
