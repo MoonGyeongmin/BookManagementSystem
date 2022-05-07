@@ -2,47 +2,30 @@ package book;
 
 import java.util.Scanner;
 
-public class NovelBook extends Book implements BookInput {
+public class PoemBook extends Book implements BookInput{
 
-	public NovelBook(BookKind kind) {
+	public PoemBook(BookKind kind) {
 		super(kind);
 	}
 
 	public void getUserInput(Scanner input) {
 		System.out.print("Book Code: ");
 		int code = input.nextInt(); 
-		input.nextLine();
 		this.setCode(code);
+		input.nextLine();
 
 		System.out.print("Book Name: ");
 		String name = input.nextLine();
 		this.setName(name);
 
-		char answer = 'x';
-		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N')
-		{
-			System.out.print("Do you know an Author Name? (Y/N)");
-			answer = input.next().charAt(0);
-			input.nextLine();
-			if(answer ==  'y' || answer == 'Y') {
-				System.out.print("Author Name: ");
-				String author = input.nextLine();
-				this.setAuthor(author);
-				break;
-			}
-			else if(answer ==  'n' || answer == 'N') {
-				this.setAuthor("");
-				break;
-			}
-			else {
-			}
-		}
+		System.out.print("Author Name: ");
+		String author = input.nextLine();
+		this.setAuthor(author);
 
 		System.out.print("Publisher Name: ");
 		String publisher = input.nextLine();
 		this.setPublisher(publisher);
 	}
-
 	public void printInfo() {
 		String skind = "none";
 		switch(this.kind) {
@@ -62,5 +45,4 @@ public class NovelBook extends Book implements BookInput {
 		}
 		System.out.println("kind:" + skind + " name:" + name + " code:" + code + " author:" + author + " publisher:" + publisher);		
 	}
-
 }

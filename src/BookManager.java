@@ -2,19 +2,21 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import book.Book;
+import book.BookInput;
 import book.BookKind;
 import book.NonFictionBook;
 import book.NovelBook;
+import book.PoemBook;
 
 public class BookManager {
-	ArrayList<Book> books = new ArrayList<Book>();
+	ArrayList<BookInput> books = new ArrayList<BookInput>();
 	Scanner input;
 	BookManager(Scanner input){
 		this.input = input;
 	}
 	public void addBooks() {
 		int kind = 0;
-		Book book;
+		BookInput bookInput;
 		while(kind != 1 && kind != 2) {
 			System.out.println("1 for Poem ");
 			System.out.println("2 for Novel ");
@@ -22,21 +24,21 @@ public class BookManager {
 			System.out.print("Select num 1, 2, or 3 for Book Kind:");
 			kind = input.nextInt(); 
 			if(kind == 1) {
-				book = new Book(BookKind.Poem);
-				book.getUserInput(input);
-				books.add(book);
+				bookInput = new PoemBook(BookKind.Poem);
+				bookInput.getUserInput(input);
+				books.add(bookInput);
 				break;
 			}
 			else if(kind == 2) {
-				book = new NovelBook(BookKind.Novel);
-				book.getUserInput(input);
-				books.add(book);
+				bookInput = new NovelBook(BookKind.Novel);
+				bookInput.getUserInput(input);
+				books.add(bookInput);
 				break;
 			}
 			else if(kind == 3) {
-				book = new NonFictionBook(BookKind.NonFiction);
-				book.getUserInput(input);
-				books.add(book);
+				bookInput = new NonFictionBook(BookKind.NonFiction);
+				bookInput.getUserInput(input);
+				books.add(bookInput);
 				break;
 			}
 			else {
@@ -71,8 +73,8 @@ public class BookManager {
 		System.out.print("Book Code: ");
 		int bookCode = input.nextInt();
 		for(int i=0;i<books.size();i++) {
-			Book book = books.get(i); 
-			if (book.getCode() == bookCode) {
+			BookInput bookInput = books.get(i); 
+			if (bookInput.getCode() == bookCode) {
 				int num = -1;
 				while (num != 5) {
 					System.out.println("** Book Info Edit Menu **");
@@ -86,24 +88,24 @@ public class BookManager {
 					if (num == 1) {
 						System.out.print("Book Code: ");
 						int code = input.nextInt();
-						book.setCode(code);
+						bookInput.setCode(code);
 					}
 					else if (num == 2) {
 						System.out.print("Book name: ");
 						String name = input.next();
-						book.setName(name);
+						bookInput.setName(name);
 						input.nextLine();
 					}
 					else if (num == 3) {
 						System.out.print("Book author: ");
 						String author = input.next();
-						book.setAuthor(author);
+						bookInput.setAuthor(author);
 						input.nextLine();
 					}
 					else if (num == 4) {
 						System.out.print("Book publisher: ");
 						String publisher = input.next();
-						book.setPublisher(publisher);
+						bookInput.setPublisher(publisher);
 						input.nextLine();
 					}
 					else {

@@ -2,7 +2,7 @@ package book;
 
 import java.util.Scanner;
 
-public class NonFictionBook extends Book {
+public class NonFictionBook extends Book implements BookInput {
 
 	protected String optionAuthor;
 	protected String optionPublisher;
