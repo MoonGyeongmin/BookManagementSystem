@@ -2,7 +2,9 @@ package book;
 
 import java.util.Scanner;
 
-public abstract class Book {
+import exception.AuthorFormatException;
+
+public abstract class Book implements BookInput{
 	protected BookKind kind = BookKind.Novel;
 	protected String name;
 	protected int code;
@@ -11,7 +13,6 @@ public abstract class Book {
 
 	public Book() {	
 	}
-
 
 	public Book(BookKind kind) {
 		this.kind = kind;
@@ -65,7 +66,11 @@ public abstract class Book {
 		return author;
 	}
 
-	public void setAuthor(String author) {
+	public void setAuthor(String author) throws AuthorFormatException {
+		if (!author.contains("작가") && !author.equals("")) {
+			throw new AuthorFormatException();
+		}
+
 		this.author = author;
 	}
 
@@ -78,4 +83,57 @@ public abstract class Book {
 	}
 
 	public abstract void printInfo();
+
+	public void setBookCode(Scanner input) {
+		System.out.print("Book Code: ");
+		int code = input.nextInt();
+		this.setCode(code);
+	}
+
+	public void setBookName(Scanner input) {
+		System.out.print("Book name: ");
+		String name = input.next();
+		this.setName(name);
+		input.nextLine();
+	}
+
+	public void setBookAuthor(Scanner input) {
+		String author = "";
+		while (!author.contains("작가")) {
+			System.out.print("Book author: ");
+			author = input.next();
+			try {
+				this.setAuthor(author);
+			} catch (AuthorFormatException e) {
+				System.out.println("Incorrect Author Format. put the author name that contains 작가");
+			}
+		}
+	}
+
+	public void setBookPublisher(Scanner input) {
+		System.out.print("Book publisher: ");
+		String publisher = input.next();
+		this.setPublisher(publisher);
+		input.nextLine();
+	}
+
+	public String getKindString() {
+		String skind = "none";
+		switch(this.kind) {
+		case Poem:
+			skind = "Poem";
+			break;
+		case Novel:
+			skind = "Novel";
+			break;
+		case ComicBook:
+			skind = "ComicBook";
+			break;
+		case NonFiction:
+			skind = "NonFiction";
+			break;
+		default:
+		}
+		return skind;
+	}
 }

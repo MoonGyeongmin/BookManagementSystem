@@ -2,7 +2,9 @@ package book;
 
 import java.util.Scanner;
 
-public class NonFictionBook extends Book implements BookInput {
+import exception.AuthorFormatException;
+
+public class NonFictionBook extends LongBook {
 
 	protected String optionAuthor;
 	protected String optionPublisher;
@@ -12,79 +14,39 @@ public class NonFictionBook extends Book implements BookInput {
 		super(kind);
 	}
 
-	public void getUserInput(Scanner input) {
-		System.out.print("Book Code: ");
-		int code = input.nextInt(); 
-		input.nextLine();
-		this.setCode(code);
+	public void getUserInput(Scanner input) {	//
+		setBookCode(input);
+		setBookName(input);
+		setBookAuthorwithYN(input);
+		setOptionBookAuthorwithYN(input);
+		setBookPublisher(input);
+	}
 
-		System.out.print("Book Name: ");
-		String name = input.nextLine();
-		this.setName(name);
-
+	public void setOptionBookAuthorwithYN(Scanner input) {
 		char answer = 'x';
-		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N')
-		{
-			System.out.print("Do you know an Author Name? (Y/N)");
-			answer = input.next().charAt(0);
-			input.nextLine();
-			if(answer ==  'y' || answer == 'Y') {
-				System.out.print("Author Name: ");
-				String author = input.nextLine();
-				this.setAuthor(author);
-				break;
-			}
-			else if(answer ==  'n' || answer == 'N') {
-				this.setAuthor("");
-				break;
-			}
-			else {
-			}
-		}
-
-		answer = 'x';
-		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N')
-		{
+		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N'){
 			System.out.print("Do you know an option Author Name? (Y/N)");
 			answer = input.next().charAt(0);
-			input.nextLine();
-			if(answer ==  'y' || answer == 'Y') {
-				System.out.print("option Author Name: ");
-				String author = input.nextLine();
-				this.setAuthor(author);
-				break;
+			try {
+				if(answer ==  'y' || answer == 'Y') {
+					setBookAuthor(input);
+					break;
+				}
+				else if(answer ==  'n' || answer == 'N') {
+					this.setAuthor("");
+					break;
+				}
+				else {
+				}
 			}
-			else if(answer ==  'n' || answer == 'N') {
-				this.setAuthor("");
-				break;
-			}
-			else {
+			catch(AuthorFormatException e) {
+				System.out.println("Incorrect Author Format. put the author name that contains ¿€∞°");
 			}
 		}
-
-		System.out.print("Publisher Name: ");
-		String publisher = input.nextLine();
-		this.setPublisher(publisher);
 	}
 
 	public void printInfo() {
-		String skind = "none";
-		switch(this.kind) {
-		case Poem:
-			skind = "Poem";
-			break;
-		case Novel:
-			skind = "Novel";
-			break;
-		case ComicBook:
-			skind = "ComicBook";
-			break;
-		case NonFiction:
-			skind = "NonFiction";
-			break;
-		default:
-		}
+		String skind = getKindString();
 		System.out.println("kind:" + skind + " name:" + name + " code:" + code + " author:" + author + " publisher:" + publisher + " option author:" + author + " option publisher:" + publisher);		
 	}
-
 }
