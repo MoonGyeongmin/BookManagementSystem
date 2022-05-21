@@ -1,17 +1,23 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import book.Book;
+
 import book.BookInput;
 import book.BookKind;
 import book.NonFictionBook;
 import book.NovelBook;
 import book.PoemBook;
 
-public class BookManager {
+public class BookManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6944453131503177659L;
+	
 	ArrayList<BookInput> books = new ArrayList<BookInput>();
-	Scanner input;
+	transient Scanner input;
 	BookManager(Scanner input){
 		this.input = input;
 	}

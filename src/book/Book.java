@@ -1,10 +1,16 @@
 package book;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.AuthorFormatException;
 
-public abstract class Book implements BookInput{
+public abstract class Book implements BookInput, Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6439730900997613146L;
+	
 	protected BookKind kind = BookKind.Novel;
 	protected String name;
 	protected int code;
