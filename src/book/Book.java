@@ -10,7 +10,7 @@ public abstract class Book implements BookInput, Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 6439730900997613146L;
-	
+
 	protected BookKind kind = BookKind.Novel;
 	protected String name;
 	protected int code;

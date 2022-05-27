@@ -1,4 +1,0 @@
-5월 21, 2022 6:10:08 오후 log.EventLogger log
-INFO: add a student
-5월 21, 2022 6:10:10 오후 log.EventLogger log
-INFO: edit a list of student

@@ -10,15 +10,15 @@ import log.EventLogger;
 
 public class MenuManager {
 	static EventLogger logger = new EventLogger("log.txt");
-	
+
 	public static void main(String[] args) {		
-		
+
 		Scanner input = new Scanner(System.in);
 		BookManager bookmanager = getObject("bookmanager.ser");
 		if (bookmanager == null) {
 			bookmanager = new BookManager(input);
 		}
-		
+
 		selectMenu(input, bookmanager);
 		putObject(bookmanager, "bookmanager.ser");
 	}
@@ -69,18 +69,18 @@ public class MenuManager {
 		System.out.println("5. Exit");
 		System.out.println("Select one number between 1-5:");
 	}
-	
+
 	public static BookManager getObject(String filename) {
 		BookManager bookmanager = null;
-		
-		
-		
+
+
+
 		try {
 			FileInputStream	file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file);
-			
+
 			bookmanager = (BookManager) in.readObject();
-			
+
 			in.close();
 			file.close();
 		} catch (FileNotFoundException e) {
@@ -92,17 +92,17 @@ public class MenuManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return bookmanager;	
 	}
-	
+
 	public static void putObject(BookManager bookmanager, String filename) {
 		try {
 			FileOutputStream file = new FileOutputStream(filename);
 			ObjectOutputStream out = new ObjectOutputStream(file);
-			
+
 			out.writeObject(bookmanager);
-			
+
 			out.close();
 			file.close();
 		} catch (FileNotFoundException e) {

@@ -15,7 +15,7 @@ public class BookManager implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -6944453131503177659L;
-	
+
 	ArrayList<BookInput> books = new ArrayList<BookInput>();
 	transient Scanner input;
 	BookManager(Scanner input){
