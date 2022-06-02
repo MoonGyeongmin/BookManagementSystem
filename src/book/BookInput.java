@@ -10,9 +10,15 @@ public interface BookInput {
 
 	public void setCode(int code);
 
+	public String getName();
+
 	public void setName(String name);
 
+	public String getAuthor();
+
 	public void setAuthor(String author) throws AuthorFormatException;
+
+	public String getPublisher();
 
 	public void setPublisher(String publisher);
 

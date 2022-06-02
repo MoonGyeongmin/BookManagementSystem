@@ -1,9 +1,10 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
+import book.Book;
 import book.BookInput;
 import book.BookKind;
 import book.NonFictionBook;
@@ -18,9 +19,15 @@ public class BookManager implements Serializable {
 
 	ArrayList<BookInput> books = new ArrayList<BookInput>();
 	transient Scanner input;
+
 	BookManager(Scanner input){
 		this.input = input;
 	}
+
+	public void setScanner(Scanner input) {
+		this.input = input;
+	}
+
 	public void addBooks() {
 		int kind = 0;
 		BookInput bookInput;
@@ -133,6 +140,14 @@ public class BookManager implements Serializable {
 		}
 	}
 
+
+	public int size() {
+		return books.size();
+	}
+
+	public BookInput get(int index) {
+		return (Book) books.get(index);
+	}
 
 
 	public void showEditMenu() {
