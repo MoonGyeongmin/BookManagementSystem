@@ -7,12 +7,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import event.BookAdderCancelListener;
+import event.BookAdderListerner;
+import manager.BookManager;
+
 public class BookAdder extends JPanel {
 
 	WindowFrame frame;
+	BookManager bookmanager;
 
-	public BookAdder(WindowFrame frame) {
+	public BookAdder(WindowFrame frame, BookManager bookmanager) {
 		this.frame = frame;
+		this.bookmanager = bookmanager;
 
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
@@ -38,11 +44,18 @@ public class BookAdder extends JPanel {
 		JLabel labelPublisher = new JLabel("Publisher: ", JLabel.TRAILING);
 		JTextField fieldPublisher = new JTextField(10);
 		labelPublisher.setLabelFor(fieldPublisher);
+
+		JButton saveButton = new JButton("save");
+		saveButton.addActionListener(new BookAdderListerner(fieldCode,fieldName,fieldAuthor,fieldPublisher,bookmanager));
+
+		JButton cancelButton = new JButton("cancel");
+		cancelButton.addActionListener(new BookAdderCancelListener(frame));
+
 		panel.add(labelPublisher);
 		panel.add(fieldPublisher);
 
-		panel.add(new JButton("save"));
-		panel.add(new JButton("cancel"));
+		panel.add(saveButton);
+		panel.add(cancelButton);
 
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
 

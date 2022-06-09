@@ -17,6 +17,37 @@ public class BookViewer extends JPanel {
 
 	BookManager bookmanager;
 
+	public BookManager getBookmanager() {
+		return bookmanager;
+	}
+
+	public void setBookmanager(BookManager bookmanager) {
+		this.bookmanager = bookmanager;
+		this.removeAll();
+
+		DefaultTableModel model = new DefaultTableModel();
+		model.addColumn("Code");
+		model.addColumn("Name");
+		model.addColumn("Author");
+		model.addColumn("Publisher");
+
+		for(int i = 0;i<bookmanager.size();i++) {
+			Vector row = new Vector();
+			BookInput bi = bookmanager.get(i);
+			row.add(bi.getCode());
+			row.add(bi.getName());
+			row.add(bi.getAuthor());
+			row.add(bi.getPublisher());
+			model.addRow(row);
+		}
+
+
+		JTable table = new JTable(model);
+		JScrollPane sp = new JScrollPane(table);
+
+		this.add(sp);		
+	}
+
 	public BookViewer(WindowFrame frame, BookManager bookmanager) { 
 		this.frame = frame;
 		this.bookmanager = bookmanager;

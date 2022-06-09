@@ -10,8 +10,8 @@ public class WindowFrame extends JFrame {
 	BookManager bookmanager;
 
 	MenuSelection menuselection;
-	BookAdder studentadder;
-	BookViewer studentviewer;
+	BookAdder bookadder;
+	BookViewer bookviewer;
 
 	public WindowFrame(BookManager bookmanager) {
 
@@ -21,8 +21,8 @@ public class WindowFrame extends JFrame {
 
 		this.bookmanager = bookmanager;
 		this.menuselection = new MenuSelection(this);
-		this.studentadder = new BookAdder(this);
-		this.studentviewer = new BookViewer(this,this.bookmanager);	
+		this.bookadder = new BookAdder(this,this.bookmanager);
+		this.bookviewer = new BookViewer(this,this.bookmanager);	
 
 
 		this.add(menuselection);
@@ -46,20 +46,20 @@ public class WindowFrame extends JFrame {
 		this.menuselection = menuselection;
 	}
 
-	public BookAdder getStudentadder() {
-		return studentadder;
+	public BookAdder getBookadder() {
+		return bookadder;
 	}
 
-	public void setStudentadder(BookAdder studentadder) {
-		this.studentadder = studentadder;
+	public void setBookadder(BookAdder bookadder) {
+		this.bookadder = bookadder;
 	}
 
-	public BookViewer getStudentviewer() {
-		return studentviewer;
+	public BookViewer getBookviewer() {
+		return bookviewer;
 	}
 
-	public void setStudentviewer(BookViewer studentviewer) {
-		this.studentviewer = studentviewer;
+	public void setBookviewer(BookViewer bookviewer) {
+		this.bookviewer = bookviewer;
 	}
 
 

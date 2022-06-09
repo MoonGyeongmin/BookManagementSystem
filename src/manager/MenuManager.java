@@ -79,9 +79,6 @@ public class MenuManager {
 
 	public static BookManager getObject(String filename) {
 		BookManager bookmanager = null;
-
-
-
 		try {
 			FileInputStream	file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file);
@@ -99,7 +96,6 @@ public class MenuManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return bookmanager;	
 	}
 

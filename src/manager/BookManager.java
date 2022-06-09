@@ -28,6 +28,16 @@ public class BookManager implements Serializable {
 		this.input = input;
 	}
 
+	public void addBooks(String code, String name, String author, String publisher) {
+		BookInput bookInput = new PoemBook(BookKind.Poem);
+		bookInput.getUserInput(input);
+		books.add(bookInput);
+	}
+
+	public void addBooks(BookInput bookInput) {
+		books.add(bookInput);
+	}
+
 	public void addBooks() {
 		int kind = 0;
 		BookInput bookInput;
